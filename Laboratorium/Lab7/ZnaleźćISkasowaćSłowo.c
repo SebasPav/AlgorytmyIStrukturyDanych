@@ -1,5 +1,4 @@
 // Sebastian Pavlovič
-// Tablica
 // 2023-01-22
 
 #include <stdio.h>
