@@ -97,7 +97,7 @@ int main() {
 
   char str[] =
       "Przykladowe wyrazy bedace palindromami: abba ada aga ala anilina "
-      "anna alla apokopa ara aviva axa bob elle gag inni lajal jeff";
+      "anna alla apokopa ara aviva axa bob elle gag inni lajal jeff ";
   int n = sizeof(str) / sizeof(str[0]);
 
   printf("Zdanie ");
@@ -145,8 +145,8 @@ void palindrom(char *str, int start, int koniec) {
 ```
 
 
-|  slowo |   anna   |   macam  | apokopa  |
-| :----: |  :----:  |  :----:  |  :----:  |
-| czas S | 0.000030 | 0.000036 | 0.000046 |
+|  slowo |   Przykladowe wyrazy bedace palindromami: abba ada aga ala anilina anna alla apokopa ara aviva axa bob elle gag inni lajal jeff |
+| :----: |  :----:  |
+| czas S | 0.000291 |
 
 # Algorytm wyszukiwania liniowego na liście cyklicznej
