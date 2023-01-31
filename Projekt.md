@@ -87,35 +87,60 @@ Realizacja w C
 #include <string.h>
 #include <time.h>
 
-void palindrom(char *str);
+#define SPACE 32
+
+void palin(char *str, int n);
+void palindrom(char *str, int start, int koniec);
 
 int main() {
   clock_t t;
 
-  char str[] = "anna";
+  char str[] =
+      "Przykladowe wyrazy bedace palindromami: abba ada aga ala anilina "
+      "anna alla apokopa ara aviva axa bob elle gag inni lajal jeff";
+  int n = sizeof(str) / sizeof(str[0]);
 
+  printf("Zdanie ");
+  for (int i = 0; i < n; i++){
+    printf("%c",str[i]);
+  }
+  printf(".\n Posiada te palindromy: ");
   t = clock();
-  palindrom(str);
+  palin(str, n);
   t = clock() - t;
   double time_taken = ((double)t) / CLOCKS_PER_SEC;
 
-  printf("\nobliczenie czy slowo jest palindromem zajelo %f seconds \n",
+  printf("\nobliczenie czy zdanie posiada palindromy zajelo %f seconds \n",
          time_taken);
 
   return 0;
 }
 
-void palindrom(char *str) {
-  int i, c = 0, n;
-  n = strlen(str);
-  for (i = 0; i < n / 2; i++) {
-    if (str[i] == str[n - i - 1])
-      c++;
+void palin(char *str, int n) {
+  int i, j = 0;
+  for (i = 0; i < n; i++) {
+    for (j = 3; j < n - i; j++) {
+      palindrom(str, i, (i + j));
+    }
   }
-  if (c == i)
-    printf("To jest palindrom");
-  else
-    printf("To nie jest palindrom");
+}
+
+void palindrom(char *str, int start, int koniec) {
+  int i, c = 0;
+  int n = koniec - start;
+  for (i = 0; i < n / 2; i++) {
+    if (str[start + i] == str[koniec - i - 1]) {
+      c++;
+    }
+  }
+  if (c == i) {
+    if (str[start] == SPACE && str[koniec - 1] == SPACE) {
+      for (i = 0; i < n; i++) {
+        printf("%c", str[start + i]);
+      }
+      printf(" ");
+    }
+  }
 }
 ```
 
